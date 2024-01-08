@@ -1,0 +1,44 @@
+<form method="post" action="/cart/add">
+  <div class="product-options">
+    <label>
+      <input type="checkbox" name="id[]" value="44902558171422">
+      <img src="https://cdn.shopify.com/s/files/1/0740/5571/3054/files/Ellipse_43.png?v=1681114844"> Product 1
+      <input type="number" class="quantity-input" data-index="0" value="1" min="1" onchange="updateQuantity(this)">
+      <input type="hidden" name="quantity[]" value="1">
+    </label>
+    <label>
+      <input type="checkbox" name="id[]" value="44820771045662">
+      <img src="https://cdn.shopify.com/s/files/1/0740/5571/3054/files/Ellipse_43.png?v=1681114844"> Product 2
+      <input type="number" class="quantity-input" data-index="1" value="1" min="1" onchange="updateQuantity(this)">
+      <input type="hidden" name="quantity[]" value="1">
+    </label>
+    <label>
+      <input type="checkbox" name="id[]" value="44902559875358">
+      <img src="https://cdn.shopify.com/s/files/1/0740/5571/3054/files/Ellipse_43.png?v=1681114844.jpg"> Product 3
+      <input type="number" class="quantity-input" data-index="2" value="1" min="1" onchange="updateQuantity(this)">
+     <input type="hidden" name="quantity[]" value="1">
+    </label>
+  </div>
+ 
+  <input type="submit" value="Add To Cart">
+</form>
+<script>
+
+ 
+
+  
+  // Enable/disable "Add to Cart" button based on number of selected checkboxes
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const addToCartBtn = document.querySelector('input[type="submit"]');
+  addToCartBtn.disabled = true;
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      const checkedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      if (checkedCount >= 3) {
+        addToCartBtn.disabled = false;
+      } else {
+        addToCartBtn.disabled = true;
+      }
+    });
+  });
+</script>
